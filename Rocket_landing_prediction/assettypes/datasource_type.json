@@ -1,0 +1,1 @@
+{"description":"Datasource Type asset type","fields":[{"key":"tags","type":"string","facet":false,"is_array":false,"is_searchable_across_types":false}],"relationships":[],"global_search_searchable":[],"attribute_only":false,"version":1,"name":"datasource_type","scope":"GLOBAL","allow_decorators":true}
