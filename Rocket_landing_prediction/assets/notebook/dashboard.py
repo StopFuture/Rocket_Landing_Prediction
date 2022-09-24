@@ -102,3 +102,33 @@ def get_scatter_chart(entered_site, payload):
 # Run the app
 if __name__ == '__main__':
     app.run_server()
+
+
+#Replace actuals for your Db2 Service Credentials
+'''dsn_driver = "{IBM DB2 ODBC DRIVER}"
+dsn_database = "BLUDB"            # e.g. "BLUDB"
+dsn_hostname = ""            # e.g.: "dashdb-txn-sbox-yp-dal09-04.services.dal.bluemix.net"
+dsn_port = ""                    # e.g. "50000" 
+dsn_protocol = "TCPIP"            # i.e. "TCPIP"
+dsn_uid = ""                 # e.g. "abc12345"
+dsn_pwd = ""                 # e.g. "7dBZ3wWt9XN6$o0J"
+dsn_security = "SSL"              #i.e. "SSL"
+
+#Create database connection
+#DO NOT MODIFY THIS CELL. Just RUN it with Shift + Enter
+dsn = (
+    "DRIVER={0};"
+    "DATABASE={1};"
+    "HOSTNAME={2};"
+    "PORT={3};"
+    "PROTOCOL={4};"
+    "UID={5};"
+    "PWD={6};"
+    "SECURITY={7};").format(dsn_driver, dsn_database, dsn_hostname, dsn_port, dsn_protocol, dsn_uid, dsn_pwd,dsn_security)
+
+try:
+    conn = ibm_db.connect(dsn, "", "")
+    print ("Connected to database: ", dsn_database, "as user: ", dsn_uid, "on host: ", dsn_hostname)
+
+except:
+    print ("Unable to connect: ", ibm_db.conn_errormsg() )'''
