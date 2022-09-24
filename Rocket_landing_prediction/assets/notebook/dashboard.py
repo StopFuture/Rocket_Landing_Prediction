@@ -4,6 +4,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import plotly.graph_objects as go
+import streamlit as st
 
 
 # Read the data into pandas dataframe
@@ -14,6 +15,17 @@ min_payload = spacex_df['Payload Mass (kg)'].min()
 # Create a dash application
 app = dash.Dash(__name__)
 
+@st.cache(persist=True)
+def load_data(n_rows):
+    imported_data = pd.read_csv(DATA_URL, nrows=n_rows, parse_dates=[['CRASH_DATE', "CRASH_TIME"]])
+
+    def lowercase(x): return str(x).lower()
+    imported_data.rename(lowercase, axis='columns', inplace=True)
+    imported_data.rename(columns={'crash_date_crash_time': 'date-time'}, inplace=True)
+    imported_data.dropna(subset=["latitude", "longitude", "injured_persons"], inplace=True)
+    return imported_data
+
+  
 # Create an app layout
 app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
                                         style={'textAlign': 'center', 'color': '#503D36',
